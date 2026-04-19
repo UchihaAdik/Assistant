@@ -43,7 +43,7 @@ router.post('/', requireAuth, async (req: AuthRequest, res: Response) => {
            // Implementation of getFutureDates already checks.
         }
         
-        const createdBatch = await Promise.all(dates.map(date => {
+        const createdBatch = await Promise.all(dates.map((date: string) => {
           return prisma.record.create({
             data: {
               userId: req.userId!,
@@ -103,7 +103,7 @@ router.get('/export', requireAuth, async (req: AuthRequest, res: Response) => {
     });
 
     const header = 'ID,Дата,Категория,Название,Детали,Сумма,Дедлайн,Выполнено';
-    const rows = records.map(r => {
+    const rows = records.map((r: any) => {
       const date = r.createdAt.toISOString().split('T')[0];
       const amount = r.finance?.amount ?? '';
       const deadline = r.task?.deadline ?? '';

@@ -14,32 +14,32 @@ router.get('/', async (req: AuthRequest, res: Response) => {
     });
 
     const categoryStats: Record<string, number> = {};
-    records.forEach((r) => {
+    records.forEach((r: any) => {
       categoryStats[r.category] = (categoryStats[r.category] || 0) + 1;
     });
 
     const financeMap: Record<string, number> = {};
     records
-      .filter((r) => r.finance)
-      .forEach((r) => {
+      .filter((r: any) => r.finance)
+      .forEach((r: any) => {
         const day = r.createdAt.toISOString().split('T')[0];
         financeMap[day] = (financeMap[day] || 0) + (r.finance!.amount || 0);
       });
 
     const sportMap: Record<string, number> = {};
     records
-      .filter((r) => r.sport)
-      .forEach((r) => {
+      .filter((r: any) => r.sport)
+      .forEach((r: any) => {
         const day = r.createdAt.toISOString().split('T')[0];
         sportMap[day] = (sportMap[day] || 0) + 1;
       });
 
-    const pendingTasks = records.filter((r) => r.task && !r.task.done).length;
+    const pendingTasks = records.filter((r: any) => r.task && !r.task.done).length;
 
     const moodMap: Record<string, number[]> = {};
     records
-      .filter((r) => r.mood)
-      .forEach((r) => {
+      .filter((r: any) => r.mood)
+      .forEach((r: any) => {
         const day = r.createdAt.toISOString().split('T')[0];
         if (!moodMap[day]) moodMap[day] = [];
         moodMap[day].push(r.mood!.score);
@@ -47,7 +47,7 @@ router.get('/', async (req: AuthRequest, res: Response) => {
 
     const moodByDay = Object.entries(moodMap).map(([date, scores]) => ({
       date,
-      averageScore: parseFloat((scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1)),
+      averageScore: parseFloat((scores.reduce((a: number, b: number) => a + b, 0) / scores.length).toFixed(1)),
     }));
 
     const streakRecords = await prisma.record.findMany({
@@ -60,7 +60,7 @@ router.get('/', async (req: AuthRequest, res: Response) => {
     });
 
     const activeDays = new Set<string>();
-    streakRecords.forEach(r => {
+    streakRecords.forEach((r: any) => {
       const d = (r.task?.doneAt || r.createdAt).toISOString().split('T')[0];
       activeDays.add(d);
     });
@@ -83,8 +83,8 @@ router.get('/', async (req: AuthRequest, res: Response) => {
 
     res.json({
       categoryStats,
-      financeByDay: Object.entries(financeMap).map(([date, amount]) => ({ date, amount })),
-      sportByDay: Object.entries(sportMap).map(([date, count]) => ({ date, count })),
+      financeByDay: Object.entries(financeMap).map(([date, amount]: [string, number]) => ({ date, amount })),
+      sportByDay: Object.entries(sportMap).map(([date, count]: [string, number]) => ({ date, count })),
       moodByDay,
       total: records.length,
       pendingTasks,

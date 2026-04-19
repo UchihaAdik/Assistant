@@ -15,10 +15,10 @@
     "schema": "prisma/schema.prisma"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
-    "prisma": "5.22.0"
+    "concurrently": "^8.2.2"
   },
   "dependencies": {
+    "prisma": "5.22.0",
     "@prisma/client": "5.22.0"
   }
 }

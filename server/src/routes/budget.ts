@@ -19,9 +19,9 @@ router.get('/', async (req: AuthRequest, res: Response) => {
       }),
     ]);
 
-    const monthlySpend = financeRecords.reduce((sum, r) => sum + (r.finance?.amount ?? 0), 0);
+    const monthlySpend = financeRecords.reduce((sum: number, r: any) => sum + (r.finance?.amount ?? 0), 0);
 
-    const result = budgets.map(b => ({
+    const result = budgets.map((b: any) => ({
       ...b,
       spent: b.category === 'finance' ? monthlySpend : 0,
     }));

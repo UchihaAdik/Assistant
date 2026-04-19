@@ -36,7 +36,7 @@ export function startCron() {
 
       for (const rid in routinesMap) {
         const tasks = routinesMap[rid];
-        const deadlines = tasks.map(t => t.deadline).filter(Boolean) as string[];
+        const deadlines = tasks.map((t: any) => t.deadline).filter(Boolean) as string[];
         if (deadlines.length === 0) continue;
         
         const maxDl = deadlines.sort().reverse()[0];
@@ -104,7 +104,7 @@ export function startCron() {
           }
         }
       }
-    } catch (e) {
+    } catch (e: any) {
       console.error('Daily cron error:', e);
     }
   });
