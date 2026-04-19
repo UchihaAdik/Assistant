@@ -6,9 +6,9 @@
     "dev:server": "cd server && npm run dev",
     "dev:client": "cd client && npm run dev",
     "build:client": "cd client && npm run build",
-    "db:push": "npx prisma db push",
-    "db:generate": "npx prisma generate",
-    "db:studio": "npx prisma studio",
+    "db:push": "./node_modules/.bin/prisma db push",
+    "db:generate": "./node_modules/.bin/prisma generate",
+    "db:studio": "./node_modules/.bin/prisma studio",
     "install:all": "npm install && cd server && npm install && cd ../client && npm install"
   },
   "prisma": {
