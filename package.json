@@ -9,7 +9,7 @@
     "db:push": "./node_modules/.bin/prisma db push",
     "db:generate": "./node_modules/.bin/prisma generate",
     "db:studio": "./node_modules/.bin/prisma studio",
-    "install:all": "npm install && cd server && npm install && cd ../client && npm install"
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client"
   },
   "prisma": {
     "schema": "prisma/schema.prisma"
