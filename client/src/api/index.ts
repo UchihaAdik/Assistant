@@ -78,7 +78,7 @@ export async function fetchRecords(params?: {
   limit?: number;
   offset?: number;
 }): Promise<LifeRecord[]> {
-  const url = new URL('/api/records', window.location.origin);
+  const url = new URL('/api/records', 'http://dummy.com');
   if (params?.category) url.searchParams.set('category', params.category);
   if (params?.from) url.searchParams.set('from', params.from);
   if (params?.to) url.searchParams.set('to', params.to);
