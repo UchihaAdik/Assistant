@@ -5,6 +5,7 @@ const CONFIG: Record<Category, { label: string; color: string; bg: string }> = {
   task:    { label: 'Задача',   color: '#fbbf24', bg: 'rgba(251,191,36,0.1)' },
   finance: { label: 'Финансы',  color: '#cc785c', bg: 'rgba(204,120,92,0.15)' },
   note:    { label: 'Заметка',  color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
+  mood:    { label: 'Настроение', color: '#f472b6', bg: 'rgba(244,114,182,0.1)' },
   other:   { label: 'Другое',   color: '#8e8ea0', bg: 'rgba(142,142,160,0.1)' },
 };
 

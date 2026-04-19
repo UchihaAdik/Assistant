@@ -8,6 +8,7 @@ export interface LifeRecord {
   details: string;
   emoji: string;
   createdAt: string;
+  routineId?: string | null;
   finance?: { amount: number; currency: string; type: string } | null;
   sport?: { duration?: number | null; sets?: number | null; reps?: number | null } | null;
   task?: { deadline?: string | null; priority: string; done: boolean; doneAt?: string | null; recurrence?: string | null } | null;

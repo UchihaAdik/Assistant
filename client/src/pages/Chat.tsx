@@ -50,7 +50,7 @@ export default function Chat() {
   const recognitionRef = useRef<any>(null);
 
   const startVoice = () => {
-    const SpeechRecognition = window.SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (!SpeechRecognition) {
       alert('Голосовой ввод не поддерживается в этом браузере.');
       return;
